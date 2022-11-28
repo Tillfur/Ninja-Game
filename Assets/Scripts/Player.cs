@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameObject gameManager;//置放GameManager物件的公開變數
     public AudioClip WalkSound;
-    public AudioClip HurtShound;
+    public AudioClip HurtSound;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     // 當貓咪碰到其他有碰撞體的東西時
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GetComponent<AudioSource>().clip = HurtShound;
+        GetComponent<AudioSource>().clip = HurtSound;
         GetComponent<AudioSource>().Play();
         gameManager.GetComponent<GameManager>().DecreaseHp(); // 扣血
     }
