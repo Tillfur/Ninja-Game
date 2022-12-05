@@ -34,9 +34,17 @@ public class Player : MonoBehaviour
     // 當貓咪碰到其他有碰撞體的東西時
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GetComponent<AudioSource>().clip = HurtSound;
-        GetComponent<AudioSource>().Play();
-        gameManager.GetComponent<GameManager>().DecreaseHp(); // 扣血
+        if (collision.tag == "arrow")
+        {
+            GetComponent<AudioSource>().clip = HurtSound;
+            GetComponent<AudioSource>().Play();
+            gameManager.GetComponent<GameManager>().DecreaseHp(); // 扣血
+        }
+        else if (collision.tag == "CatFood") 
+        {
+            gameManager.GetComponent<GameManager>().IncreaseHp();
+        }
+        
     }
 
     // 當玩家按下畫面左按鍵時，貓咪往左移動「3」
